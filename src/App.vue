@@ -1,13 +1,14 @@
 <template>
-  <h1>Simulador de Tweets</h1>
-  <div class="alert alert-primary" role="alert">
-    A simple primary alert—check it out!
-  </div>
+  <Menu />
 </template>
 
 <script>
+import Menu from './components/Menu';
 export default {
   name: "App",
+  components:{
+    Menu
+  }
 };
 </script>
 
