@@ -1,13 +1,33 @@
 import { v4 as uuidv4 } from 'uuid';
 import { TWEETS } from "../utils/constants";
 
-export function saveTweetApi(tweet, username){
-    const tweetTemp = {
-        id: uuidv4(),
-        tweet,
-        username,
-        createdAt: new Date()
-    };
-    console.log(tweetTemp);
-    localStorage.setItem(TWEETS,JSON.stringify(tweetTemp));
+export function saveTweetApi(tweet, username) {
+
+    const tweets = getTweetsApi();
+    
+    if (tweets.length === 0) {
+        const tweetTemp = [{
+            id: uuidv4(),
+            tweet,
+            username,
+            createdAt: new Date()
+        }];
+        localStorage.setItem(TWEETS, JSON.stringify(tweetTemp));
+    } else {
+        tweets.push({
+            id: uuidv4(),
+            tweet,
+            username,
+            createdAt: new Date()
+        });
+        localStorage.setItem(TWEETS, JSON.stringify(tweets));
+    }
+}
+
+export function getTweetsApi() {
+    const tweets = localStorage.getItem(TWEETS);
+    if (tweets) {
+        return JSON.parse(tweets);
+    }
+    return [];
 }
