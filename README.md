@@ -1,5 +1,9 @@
 # tweet-simulator
 
+# URL DEMO
+
+Open [https://tweetsimulator-tx.netlify.app/](https://tweetsimulator-tx.netlify.app/)
+
 ## Project setup
 ```
 yarn install
