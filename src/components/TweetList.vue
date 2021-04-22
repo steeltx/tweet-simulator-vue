@@ -2,21 +2,28 @@
   <div class="container">
     <h1 class="text-center mb-4">Lista de Tweets</h1>
     <div class="tweet" v-for="tweet in tweets" :key="tweet.id">
-      <p class="tweet__title">{{tweet.username}}</p>
-      <p class="tweet__text">{{tweet.tweet}}</p>
-      <span>{{tweet.createdAt}}</span>
+      <p class="tweet__title">{{ tweet.username }}</p>
+      <p class="tweet__text">{{ tweet.tweet }}</p>
+      <span>{{ formatDate(tweet.createdAt) }}</span>
     </div>
   </div>
 </template>
 
 <script>
+import moment from "moment";
+import "moment/locale/es";
 export default {
-    props:{
-        tweets: Array
-    },
-    setup (props) {
-        console.log(props.tweets);
-    }
+  props: {
+    tweets: Array,
+  },
+  setup(props) {
+    const formatDate = (date) => {
+      return moment(date).fromNow();
+    };
+    return {
+      formatDate,
+    };
+  },
 };
 </script>
 
