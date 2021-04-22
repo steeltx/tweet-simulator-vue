@@ -5,6 +5,7 @@
       <p class="tweet__title">{{ tweet.username }}</p>
       <p class="tweet__text">{{ tweet.tweet }}</p>
       <span>{{ formatDate(tweet.createdAt) }}</span>
+      <Close/>
     </div>
   </div>
 </template>
@@ -12,9 +13,14 @@
 <script>
 import moment from "moment";
 import "moment/locale/es";
+import { Close } from "./Icons/index";
+
 export default {
   props: {
     tweets: Array,
+  },
+  components:{
+    Close
   },
   setup(props) {
     const formatDate = (date) => {
@@ -27,7 +33,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .tweet {
   position: relative;
   border: 1px solid #ccc;
@@ -64,5 +70,15 @@ export default {
     padding: 0 20px;
     border: 1px solid #ccc;
   }
+
+  svg{
+    width: 20px;
+    height: 20px;
+    &:hover{
+      cursor: pointer;
+      color: #f00;
+    }
+  }
+  
 }
 </style>
